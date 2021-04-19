@@ -1,0 +1,13 @@
+<button class="button btn-info" *ngIf='showFile' (click)='showFiles(false)'>Hide Images</button>
+
+<button class="button btn-info" *ngIf='!showFile' (click)='showFiles(true)'>Show Images</button>
+
+<div [hidden]="!showFile" id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+	<div class="carousel-inner">
+		<div class="carousel-item" *ngFor="let file of fileUploads | async">
+			<div class="panel-body">
+				<details-upload [fileUpload]='file'></details-upload>
+			</div>
+		</div>
+	</div>
+</div>
