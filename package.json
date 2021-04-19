@@ -1,7 +1,7 @@
 {
-  "name": "angular4-upload",
+  "name": "rover-upload",
   "version": "0.0.0",
-  "license": "MIT",
+  "license": "JER",
   "scripts": {
     "ng": "ng",
     "start": "ng server --proxy-config proxy.conf.json",

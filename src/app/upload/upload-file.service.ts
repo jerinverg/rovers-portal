@@ -7,12 +7,12 @@ export class UploadFileService {
 
   constructor(private http: HttpClient) {}
 
-  pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+  pushFileToBack(file: File): Observable<HttpEvent<{}>> {
     let formdata: FormData = new FormData();
 
     formdata.append('file', file);
 
-    const req = new HttpRequest('POST', 'http://localhost:8098/backend-jee-servipag-consulta/post', formdata, {
+    const req = new HttpRequest('POST', 'http://localhost:8080/rover/doUploadFile', formdata, {
       reportProgress: true,
       responseType: 'text'
     });
@@ -20,7 +20,14 @@ export class UploadFileService {
     return this.http.request(req);
   }
 
-  getFiles(): Observable<any> {
-    return this.http.get('http://localhost:8098/backend-jee-servipag-consulta/getallfiles')
+
+  public sendDataToBack(body) {
+    const req = new HttpRequest('POST', 'http://localhost:8080/rover/doUploadData', body, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
   }
+
 }
